@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Endogenous] (outcomes) at (1, 0) {$Y$};
+		\node [style=Policy] (policy) at (2, 2) {$P$};
+		\node [style=Confounder] (confounder) at (0, 2) {$\epsilon$};
+		\node [style=Confounder] (noise) at (-0.5, 1) {$\eta$};
+		% do model
+		\node [style=Endogenous] (do_outcomes) at (6, 0) {$Y$};
+		\node [style=Policy] (do_policy) at (5, 2) {$P$};
+		\node [style=Confounder] (do_confounder) at (7, 2) {$\epsilon$};
+		\node [style=Confounder] (do_noise) at (7.5, 1) {$\eta$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [->, style=arrow, draw=red] (confounder) to (policy);
+		\draw [->, style=arrow, draw=red] (noise) to (outcomes);
+		\draw [->, style=arrow, draw=red] (confounder) to (outcomes);
+		\draw [->, style=arrow, draw=blue] (policy) to node[pos=0.9, right] {$g_0(\textcolor{blue}{p})$} (outcomes);
+		% do model
+		\draw [->, style=arrow, draw=red] (do_noise) to (do_outcomes);
+		\draw [->, style=arrow, draw=red] (do_confounder) to (do_outcomes);
+		\draw [->, style=arrow, draw=blue] (do_policy) to node[pos=0.9, left] {$g_0(\textcolor{blue}{p})$} (do_outcomes);
+		% implies
+		\draw [-implies, double distance=1mm, draw=black, line width=0.5mm] (2.5, 1) -- node[above] {do$(\color{blue}{P})$} (4.5,1);
+		% labels
+		\draw [draw=black, line width = 0.5mm] (-0.5,3.5) rectangle (2.5,2.5) node[pos=0.5] {\color{black}{Observation}};
+		\draw [draw=black, line width = 0.5mm] (4.5,3.5) rectangle (7.5,2.5) node[pos=0.5] {\color{black}{Intervention}};
+	\end{pgfonlayer}
+\end{tikzpicture}

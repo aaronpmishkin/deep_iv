@@ -1,0 +1,19 @@
+
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Instrument] (instrument) at (-2, 0) {$Z$};
+		\node [style=Endogenous] (features) at (0, 2) {$X$};
+		\node [style=Endogenous] (outcomes) at (2, 0) {$Y$};
+		\node [style=Policy] (policy) at (0, 0) {$p$};
+		\node [style=Confounder] (confounder) at (2, 2) {$\epsilon$};
+		\node [] (mapping) at (4,0) {$Y = g(\policy{}, \features{}) + \confounder{}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [->, style=arrow, draw=red] (confounder) to (outcomes);
+		\draw [->, style=arrow, draw=red] (confounder) to (features);
+		\draw [->, style=arrow, draw=blue] (policy) to (outcomes);
+		\draw [->, style=arrow, draw=black] (features) to (outcomes);
+
+		\draw [draw=black, line width = 0.5mm] (-4, 1) rectangle (-1, 2) node[pos=0.5] {Intervention};
+	\end{pgfonlayer}
+\end{tikzpicture}

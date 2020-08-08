@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Endogenous] (outcomes) at (1, 0) {$I$};
+		\node [style=Policy] (policy) at (0, 2) {$P$};
+		\node [style=Confounder] (confounder) at (2, 2) {$C$};
+		\node [style=Instrument] (instrument) at (0, 4) {$F$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [->, style=arrow, draw=red] (confounder) to (policy);
+		\draw [->, style=arrow, draw=red] (confounder) to (outcomes);
+		\draw [->, style=arrow, draw=blue] (policy) to (outcomes);
+		\draw [->, style=arrow, draw=Plum] (instrument) to (policy);
+
+		% colored labels
+		\draw [draw=red, line width = 0.5mm] (3,2.5) rectangle (5,1.5) node[pos=0.5] {\color{red}{Conference}};
+		\draw [draw=black, line width = 0.5mm] (2,0.5) rectangle (4,-0.5) node[pos=0.5] {\color{black}{Income}};
+		\draw [draw=blue, line width = 0.5mm] (-3,1.5) rectangle (-1,2.5) node[pos=0.5] {\color{blue}{Price}};
+		\draw [draw=Plum, line width = 0.5mm] (-3,3.5) rectangle (-1,4.5) node[pos=0.5] {\color{Plum}{Fuel}};
+	\end{pgfonlayer}
+\end{tikzpicture}

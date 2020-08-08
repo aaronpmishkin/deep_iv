@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Endogenous] (outcomes) at (1, 0) {$A$};
+		\node [style=Policy] (policy) at (0, 2) {$G$};
+		\node [style=Confounder] (confounder) at (2, 2) {$D$};
+		% do model
+		\node [style=Endogenous] (do_outcomes) at (6, 0) {$A$};
+		\node [style=Policy] (do_policy) at (5, 2) {$G$};
+		\node [style=Confounder] (do_confounder) at (7, 2) {$D$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [->, style=arrow, draw=red] (confounder) to (policy);
+		\draw [->, style=arrow, draw=red] (confounder) to (outcomes);
+		\draw [->, style=arrow, draw=blue] (policy) to (outcomes);
+		\draw [->, style=arrow, draw=red] (do_confounder) to (do_outcomes);
+		\draw [->, style=arrow, draw=blue] (do_policy) to (do_outcomes);
+		\draw [-implies, double distance=1mm, draw=black, line width=0.5mm] (2.5, 1) -- (4.5,1);
+
+		% labels
+		\draw [draw=black, line width = 0.5mm] (-1,4) rectangle (3,3) node[pos=0.5] {\color{black}{Observational Data}};
+		\draw [draw=black, line width = 0.5mm] (4,4) rectangle (8,3) node[pos=0.5] {\color{black}{Controlled Exp.}};
+	\end{pgfonlayer}
+\end{tikzpicture}

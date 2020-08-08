@@ -1,0 +1,15 @@
+\usetikzlibrary{arrows}
+
+% node styles
+\tikzstyle{Endogenous}=[minimum size=0.7cm, fill=white, line width = 0.5mm, draw=black, shape=circle, text=black]
+\tikzstyle{Policy}=[minimum size=0.7cm, fill=white, line width = 0.5mm, draw=blue, shape=circle, text=blue]
+\tikzstyle{Confounder}=[minimum size=0.7cm, fill=white, line width = 0.5mm, draw=red, shape=circle, text=red]
+\tikzstyle{Instrument}=[minimum size=0.7cm, fill=white, line width = 0.5mm, draw=Plum, shape=circle, text=Plum]
+
+% Edge styles
+\tikzstyle{arrow}=[line width = 0.5mm]
+
+
+\pgfdeclarelayer{nodelayer}
+\pgfdeclarelayer{edgelayer}
+\pgfsetlayers{nodelayer, edgelayer}

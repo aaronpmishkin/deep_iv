@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Endogenous] (outcomes) at (1, 0) {$Y$};
+		\node [style=Policy] (policy) at (0, 2) {$P$};
+		\node [style=Confounder] (confounder) at (2, 2) {$\epsilon$};
+		\node [style=Confounder] (noise) at (2.5, 1) {$\eta$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [->, style=arrow, draw=red] (confounder) to (policy);
+		\draw [->, style=arrow, draw=red] (noise) to (outcomes);
+		\draw [->, style=arrow, draw=red] (confounder) to (outcomes);
+		\draw [->, style=arrow, draw=blue] (policy) to node[pos=0.5, left] {$g_0(\textcolor{blue}{p})$} (outcomes);
+	\end{pgfonlayer}
+\end{tikzpicture}

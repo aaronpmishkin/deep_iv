@@ -1,0 +1,26 @@
+
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Instrument] (instrument) at (-2, 0) {$Z$};
+		\node [style=Endogenous] (features) at (0, 2) {$X$};
+		\node [style=Endogenous] (outcomes) at (2, 0) {$Y$};
+		\node [style=Policy] (policy) at (0, 0) {$P$};
+		\node [style=Confounder] (confounder) at (2, 2) {$\epsilon$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [->, style=arrow, draw=red] (confounder) to (policy);
+		\draw [->, style=arrow, draw=red] (confounder) to (outcomes);
+		\draw [->, style=arrow, draw=red] (confounder) to (features);
+		\draw [->, style=arrow, draw=blue] (policy) to (outcomes);
+		\draw [->, style=arrow, draw=black] (features) to (outcomes);
+		\draw [->, style=arrow, draw=black] (features) to (policy);
+		\draw [->, style=arrow, draw=Plum] (instrument) to (policy);
+
+		% colored labels
+		\draw [draw=red, line width = 0.5mm] (3,2.5) rectangle (5,1.5) node[pos=0.5] {\color{red}{Confounder}};
+		\draw [draw=black, line width = 0.5mm] (3,0.5) rectangle (5,-0.5) node[pos=0.5] {\color{black}{Response}};
+		\draw [draw=black, line width = 0.5mm] (-3,2.5) rectangle (-1,1.5) node[pos=0.5] {\color{black}{Features}};
+		\draw [draw=blue, line width = 0.5mm] (-1,-1) rectangle (1,-2) node[pos=0.5] {\color{blue}{Policy}};
+		\draw [draw=Plum, line width = 0.5mm] (-5,0.5) rectangle (-3,-0.5) node[pos=0.5] {\color{Plum}{Instrument}};
+	\end{pgfonlayer}
+\end{tikzpicture}

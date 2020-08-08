@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Endogenous] (outcomes) at (1, 0) {$A$};
+		\node [style=Policy] (policy) at (0, 2) {$G$};
+		\node [style=Confounder] (confounder) at (2, 2) {?};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [->, style=arrow, draw=red] (confounder) to (policy);
+		\draw [->, style=arrow, draw=red] (confounder) to (outcomes);
+		\draw [->, style=arrow, draw=blue] (policy) to node[pos=0.5, left] {$g(\textcolor{blue}{G})$} (outcomes);
+
+		% % colored labels
+		% \draw [draw=red, line width = 0.5mm] (3,2.5) rectangle (5,1.5) node[pos=0.5] {\color{red}{Department}};
+		\draw [draw=black, line width = 0.5mm] (2,0.5) rectangle (4,-0.5) node[pos=0.5] {\color{black}{Admission}};
+		\draw [draw=blue, line width = 0.5mm] (-3,1.5) rectangle (-1,2.5) node[pos=0.5] {\color{blue}{Gender}};
+	\end{pgfonlayer}
+\end{tikzpicture}
